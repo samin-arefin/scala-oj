@@ -8,16 +8,16 @@ import scala.language.reflectiveCalls
 object SolverTemplate extends App {
 
 
-  class WithTimer(procedure: => Unit) {
+  class WithTimer(val name: String = "", procedure: => Unit) {
     private val start = System.currentTimeMillis()
     procedure
     private val end = System.currentTimeMillis()
     val time = end - start
-    def foreach(f: Long => Unit) = f(time)
+    def foreach(f: (String, Long) => Unit) = f(name, time)
   }
 
   object WithTimer {
-    def apply(procedure: => Unit) = new WithTimer(procedure)
+    def apply(name: String = "")(procedure: => Unit) = new WithTimer(name, procedure)
   }
 
 
@@ -36,7 +36,7 @@ object SolverTemplate extends App {
   using(new IOTemplate()) { io =>
     import io._
 
-    WithTimer {
+    WithTimer("some process") {
 
 
       // do your stuff
