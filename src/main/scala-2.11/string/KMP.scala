@@ -1,4 +1,4 @@
-package misc.string
+package string
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
