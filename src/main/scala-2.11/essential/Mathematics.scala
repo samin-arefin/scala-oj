@@ -57,7 +57,7 @@ object Mathematics {
 
 
   def randomPrime(bitLength: Int): Long =
-    if (bitLength < 2 || bitLength > 63) BigInt.probablePrime(31, new Random()).longValue()
+    if (bitLength < 2 || bitLength > 55) BigInt.probablePrime(31, new Random()).longValue()
     else BigInt.probablePrime(bitLength, new Random()).longValue()
 
 
