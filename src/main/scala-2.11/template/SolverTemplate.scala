@@ -21,6 +21,11 @@ object SolverTemplate extends App {
   }
 
 
+  implicit class Pipe[A](val value: A) {
+    def |>[B](f: A => B): B = f(value)
+  }
+
+
   // taken from http://www.slideshare.net/Odersky/fosdem-2009-1013261 slide 21
   def using[T <: {def close()}]
   (resource: T)
